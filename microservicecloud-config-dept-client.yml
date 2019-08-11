@@ -1,0 +1,75 @@
+spring:
+    profiles:
+      active:
+       - dev
+---
+server:
+    port: 8001  #注册中心占用7001端口，冒号后面必须要有空格
+spring: 
+  profiles: dev
+  application:
+     name: microservicecloud-config-dept-client
+   datasource: 
+     type: com.alibaba.druid.pool.DruidDataSource
+     driver-class-name: org.gjt.mm.mysql.Driver
+     url: jdbc:mysql://192.168.138.128:3306/cloudDB01
+     username: root
+     password: root
+     dbcp2: 
+         min-idle: 5
+         initial-size: 5
+         max-total: 5
+         max-wait-millis: 20
+mybatis: 
+    config-location: classpath:mybatis/mybatis.cfg.xml
+    type-aliases-package: com.atguigu.springcloud.entities
+    mapper-locations: 
+    - classpath: mybatis/mapper/**/*.xml
+eureka:
+    client: 
+      service-url: 
+          defaultZone: http://eureka-7001.com:7001/eureka/
+    instance: 
+       instance-id: dept-8001.com
+       prefer-ip-address: true
+info:
+  app.name: atguigu-microservicecloud
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+server:
+    port: 8001  #注册中心占用7001端口，冒号后面必须要有空格
+spring: 
+  profiles: test
+  application:
+     name: microservicecloud-config-dept-client
+   datasource: 
+     type: com.alibaba.druid.pool.DruidDataSource
+     driver-class-name: org.gjt.mm.mysql.Driver
+     url: jdbc:mysql://192.168.138.128:3306/cloudDB02
+     username: root
+     password: root
+     dbcp2: 
+         min-idle: 5
+         initial-size: 5
+         max-total: 5
+         max-wait-millis: 20 
+mybatis: 
+    config-location: classpath:mybatis/mybatis.cfg.xml
+    type-aliases-package: com.atguigu.springcloud.entities
+    mapper-locations: 
+    - classpath: mybatis/mapper/**/*.xml
+eureka:
+    client: 
+      service-url: 
+          defaultZone: http://eureka-7001.com:7001/eureka/
+    instance: 
+       instance-id: dept-8001.com
+       prefer-ip-address: true
+info:
+  app.name: atguigu-microservicecloud
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
