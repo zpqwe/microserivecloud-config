@@ -11,7 +11,7 @@ spring:
     application: 
          name: microservicecloud-config-client
 eureka:
-    client:
+    client: 
       service-url: 
           defaultZone: http://eureka-dev.com:7001/eureka/
 ---
@@ -22,7 +22,7 @@ spring:
     application: 
       name: microservicecloud-config-client
 eureka:
-    client:
+    client: 
       service-url: 
           defaultZone: http://eureka-test.com:7001/eureka/
 #请保存为utf-8格式
